@@ -1,5 +1,5 @@
 .acBox {
-  @apply p-8 h-3/5 lg:rounded-xl lg:drop-shadow-lg bg-acBox-light text-acBox-light dark:bg-acBox-dark dark:text-acBox-dark;
+  @apply p-5 h-3/5 lg:rounded-xl lg:drop-shadow-lg bg-acBox-light text-acBox-light dark:bg-acBox-dark dark:text-acBox-dark;
 }
 
 .acBox__title{
@@ -16,7 +16,7 @@
 }
 
 .checkbox:checked + .toggle{
-  @apply bg-acGray
+  @apply bg-acCoal
 }
 
 .checkbox:checked + .toggle:before {

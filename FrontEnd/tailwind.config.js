@@ -24,12 +24,16 @@ export default {
         acBlue: '#101D42',
         acWhite: '#F7F7F7',
         acBlack: '#121212',
+        acCoal: '#282828',
         acGray: '#3F3F3F',
         acSmoke: '#f0f0f0',
         acRed: '#af0505',
         acGreen: '#42a548',
         acYellow: '#dfb213',
       },
+      animation: {
+        'spin-slow': 'spin 3s linear infinite',
+      }
     },
   },
   plugins: [],
