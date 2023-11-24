@@ -7,13 +7,10 @@ const server = http.createServer(app);
 
 app.set('port', process.env.PORT || 3000);
 
-// Se sirve el contenido estático desde la carpeta public
-//app.use(express.static(path.join(__dirname, 'public')));
-
 // Creación del servidor Socket.io
 const io = socketIO(server, {
     cors: {
-        origin: "wss://airquality-production.up.railway.app",
+        origin: "http://localhost:3001", // Reemplaza con la URL de tu frontend
         methods: ["GET", "POST"]
     }
 });
@@ -49,38 +46,10 @@ io.on('connection', (socket) => {
     // Manejo de eventos del servidor externo y retransmisión a los clientes
     externalSocket.on(`${sensorId}/initialData`, (data) => {
         console.log('Data inicial:', data);
-        io.emit(`${sensorId}/datos`, data);
+        io.emit(`${sensorId}/datos`, data); // Emitir datos a todos los clientes conectados
     });
 
-    externalSocket.on(`${sensorId}/initialData`, (data) => {
-        console.log('Data inicial:', data);
-        io.emit(`${sensorId}/datos`, data);
-    });
-
-    externalSocket.on(`${sensorId}/aq`, (data) => {
-        console.log('Air Quality:', data);
-        io.emit(`${sensorId}/datos`, { airQuality: data });
-    });
-
-    externalSocket.on(`${sensorId}/temperature`, (data) => {
-        console.log('Temperatura (C°):', data);
-        io.emit(`${sensorId}/datos`, { temperature: data });
-    });
-
-    externalSocket.on(`${sensorId}/h2s`, (data) => {
-        console.log('Sulfuro de Hidrogeno:', data);
-        io.emit(`${sensorId}/datos`, { h2s: data });
-    });
-
-    externalSocket.on(`${sensorId}/humidity`, (data) => {
-        console.log('Humedad (%):', data);
-        io.emit(`${sensorId}/datos`, { humidity: data });
-    });
-
-    externalSocket.on(`${sensorId}/date`, (data) => {
-        console.log('Fecha y Hora actual:', data);
-        io.emit(`${sensorId}/datos`, { date: data });
-    });
+    // Otros eventos y lógica aquí
 
     // Manejo de eventos de desconexión
     externalSocket.on('disconnect', () => {
