@@ -1,32 +1,16 @@
 import PropTypes from "prop-types";
 
 const AcStats = ({ stats }) => {
-
-  const getSuffix = (label) => {
-    switch (label) {
-      case "Temp":
-        return "°C";
-      case "H2S":
-        return "ppm";
-      case "Humity":
-        return "%";
-      case "Date":
-        return "Nov";
-      default:
-        return "";
-    }
-  };
-
   return (
-    <div className="hidden gap-8 lg:grid grid-cols-2 grid-rows-2 place-items-stretch h-full ">
-      {stats.map((button, index) => (
+    <div className="grid gap-5 md:grid-cols-6 lg:grid-cols-2 lg:place-items-stretch lg:h-full">
+      {stats.map((stat, index) => (
         <button
           key={index}
-          className={`flex flex-col items-center justify-between py-5 rounded-xl drop-shadow-lg bg-acSmoke dark:bg-acGray`}
+          className={`flex flex-col font-semibold text-sm items-center gap-1 justify-between md:px-5 md:py-2 lg:px-0 lg:py-3 rounded-xl drop-shadow-lg bg-acSmoke dark:bg-acGray`}
         >
-          <span className="text-xl flex justify-start">{button.label}</span>
-          {button.icon}
-          <span className="text-xl font-semibold flex justify-start">{button.value} {getSuffix(button.label)}</span>
+          <span>{stat.label}</span>
+          <span>{stat.icon}</span>
+          <span>{stat.value + " " + stat.unit}</span>
         </button>
       ))}
     </div>

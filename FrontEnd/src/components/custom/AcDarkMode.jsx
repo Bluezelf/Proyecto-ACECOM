@@ -7,7 +7,7 @@ const AcDarkMode = () => {
   const [darkMode, toggleDarkMode] = CustomDarkHook();
 
   return (
-    <div className="absolute top-10 right-20">
+    <div className="absolute z-20 top-3 right-6 md:right-10 md:top-7 lg:top-10 lg:right-20">
       <input
         type="checkbox"
         id="check"
