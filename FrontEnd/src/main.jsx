@@ -9,23 +9,25 @@ const socket = io(serverUrl);
 
 const SensorData = () => {
     const [data, setData] = useState(null);
+    const [data_2, setData_2] = useState(null);
 
     useEffect(() => {
-        socket.on('connect', () => {
-            console.log('Conectado al servidor WebSocket');
-        });
+        // No necesitas manejar la conexión y desconexión aquí.
+        // Esto se manejará automáticamente por Socket.io
 
-        socket.on('disconnect', () => {
-            console.log('Desconectado del servidor WebSocket');
-        });
-
-        socket.on('1/datos', (receivedData) => {
+        // Escuchar eventos específicos
+        socket.on('1/temperature', (receivedData) => {
             console.log('Datos recibidos:', receivedData);
             setData(receivedData); // Actualiza el estado con los datos recibidos
         });
 
+        socket.on('1/aq', (receivedData) => {
+            console.log('Datos recibidos:', receivedData);
+            setData_2(receivedData); // Actualiza el estado con los datos recibidos
+        });
+
         return () => {
-            socket.disconnect(); // Desconectar el socket al desmontar el componente
+            socket.off('1/datos'); // Desvincular el evento al desmontar el componente
         };
     }, []);
 
@@ -34,8 +36,8 @@ const SensorData = () => {
             {data && (
                 <div>
                     {/* Mostrar los datos en tu componente según sea necesario */}
-                    <p>Temperatura: {data.temperature}</p>
-                    <p>Air Quality: {data.airQuality}</p>
+                    <p>Temperatura: {data}</p>
+                    <p>Air Quality: {data_2}</p>
                     {/* Otros campos de datos */}
                 </div>
             )}
