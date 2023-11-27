@@ -46,10 +46,37 @@ io.on('connection', (socket) => {
     // Manejo de eventos del servidor externo y retransmisión a los clientes
     externalSocket.on(`${sensorId}/initialData`, (data) => {
         console.log('Data inicial:', data);
-        io.emit(`${sensorId}/datos`, data); // Emitir datos a todos los clientes conectados
+        io.emit(`${sensorId}/initialData`, data);
     });
 
-    // Otros eventos y lógica aquí
+    socket.on(`${sensorId}/aq`, (data) => {
+        console.log('Air Quality:', data);
+        io.emit(`${sensorId}/aq`, data);
+    });
+
+    socket.on(`${sensorId}/temperature`, (data) => {
+        console.log('Temperatura (C°):', data);
+        io.emit(`${sensorId}/temperature`, data);
+    });
+
+    socket.on(`${sensorId}/h2s`, (data) => {
+        console.log('Sulfuro de Hidrogeno":', data);
+        io.emit(`${sensorId}/h2s`, data);
+    });
+
+    socket.on(`${sensorId}/humidity`, (data) => {
+        console.log('Humedad (%):', data);
+        io.emit(`${sensorId}/humidity`, data);
+    });
+
+    socket.on(`${sensorId}/date`, (data) => {
+        console.log('Fecha y Hora actual:', data);
+        io.emit(`${sensorId}/date`, data);
+    });
+
+    socket.on('error', (error) => {
+        console.error('Error de conexión:', error);
+    });
 
     // Manejo de eventos de desconexión
     externalSocket.on('disconnect', () => {
