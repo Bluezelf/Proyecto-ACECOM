@@ -4,7 +4,7 @@ import { io } from 'socket.io-client';
 import App from './App.jsx';
 import './index.css';
 
-const serverUrl = 'http://localhost:3000'; // Reemplaza con la URL de tu servidor
+const serverUrl = 'http://localhost:3000';
 const socket = io(serverUrl);
 
 const SensorData = () => {
@@ -14,32 +14,28 @@ const SensorData = () => {
     const [data_4, setData_4] = useState(null);
 
     useEffect(() => {
-        // No necesitas manejar la conexión y desconexión aquí.
-        // Esto se manejará automáticamente por Socket.io
-
-        // Escuchar eventos específicos
         socket.on('1/temperature', (receivedData) => {
             console.log('Datos recibidos:', receivedData);
-            setData(receivedData); // Actualiza el estado con los datos recibidos
+            setData(receivedData);
         });
 
         socket.on('1/aq', (receivedData) => {
             console.log('Datos recibidos:', receivedData);
-            setData_2(receivedData); // Actualiza el estado con los datos recibidos
+            setData_2(receivedData);
         });
 
         socket.on('1/humidity', (receivedData) => {
             console.log('Datos recibidos:', receivedData);
-            setData_3(receivedData); // Actualiza el estado con los datos recibidos
+            setData_3(receivedData);
         });
 
         socket.on('1/date', (receivedData) => {
             console.log('Datos recibidos:', receivedData);
-            setData_4(receivedData); // Actualiza el estado con los datos recibidos
+            setData_4(receivedData);
         });
 
         return () => {
-            socket.off('1/datos'); // Desvincular el evento al desmontar el componente
+            socket.off('1/datos');
         };
     }, []);
 
@@ -47,12 +43,12 @@ const SensorData = () => {
         <div>
             {data && (
                 <div>
-                    {/* Mostrar los datos en tu componente según sea necesario */}
+                    {/* XXXXXXXXXXXX */}
                     <p>Temperatura: {data}</p>
                     <p>Air Quality: {data_2}</p>
                     <p>Humidity: {data_3}</p>
                     <p>Date: {data_4}</p>
-                    {/* Otros campos de datos */}
+                    {/* XXXXXXXXXXXXXXXX */}
                 </div>
             )}
         </div>

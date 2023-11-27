@@ -9,10 +9,6 @@ const server = createServer(app);
 
 app.set('port', process.env.PORT || 3000);
 
-// app.get('/', (req, res) => {
-//     res.sendFile(join(__dirname, '/../FrontEnd/index.html'))
-// })
-
 // Creación del servidor Socket.io
 const ioServer = new Server(server, {
     cors: {
@@ -40,10 +36,9 @@ const externalSocket = io(serverUrl, {
             }
         }
     },
-    query: queryObject  // Aquí se pasa el queryObject al servidor externo
+    query: queryObject
 });
 
-// Manejo de eventos del servidor externo y retransmisión a los clientes
 externalSocket.on(`${sensorId}/initialData`, (data) => {
     console.log('Data inicial:', data);
     ioServer.emit(`${sensorId}/initialData`, data);
@@ -85,8 +80,6 @@ externalSocket.on('disconnect', () => {
 ioServer.on('connection', (socket) => {
     console.log('Usuario conectado');
 });
-
-
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
