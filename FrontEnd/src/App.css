@@ -1,9 +1,9 @@
 .acBox {
-  @apply p-5 h-3/5 lg:rounded-xl lg:drop-shadow-lg bg-acBox-light text-acBox-light dark:bg-acBox-dark dark:text-acBox-dark;
+  @apply p-4 lg:p-8 lg:h-[70%] md:h-full rounded-xl drop-shadow-lg bg-acBox-light text-acBox-light dark:bg-acBox-dark dark:text-acBox-dark;
 }
 
 .acBox__title{
-  @apply text-3xl font-extrabold tracking-wide flex justify-center
+  @apply text-2xl md:text-2xl lg:text-3xl font-extrabold tracking-wide flex lg:justify-start lg:justify-center
 }
 
 .toggle {
@@ -16,7 +16,7 @@
 }
 
 .checkbox:checked + .toggle{
-  @apply bg-acCoal
+  @apply bg-acGray lg:bg-acCoal 
 }
 
 .checkbox:checked + .toggle:before {

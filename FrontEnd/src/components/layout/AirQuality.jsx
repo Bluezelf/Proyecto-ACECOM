@@ -19,22 +19,20 @@ function getShadowClass(airquality) {
 }
 
 const AirQuality = () => {
-  let airquality = 25;
-  let airQualityColorClass = getColorClass(airquality);
-  let airQualityShadowClass = getShadowClass(airquality);
+  let airquality = 128;
+  let colorClass = getColorClass(airquality);
+  let shadowClass = getShadowClass(airquality);
 
   return (
-    <section className="hidden acBox col-span-1 flex-col lg:flex">
+    <section className="flex h-full lg:h-[70%] acBox col-span-1 flex-col md:row-span-2 lg:row-span-3">
       <h1 className="acBox__title">AirQuality</h1>
       <div className="relative flex justify-center h-full items-center">
-        <div className={`absolute flex flex-col items-center z-20 dark:text-acBox-dark ${airQualityColorClass}`}>
-          <p className={`text-8xl font-extrabold tracking-wide`}>
-            {airquality}
-          </p>
-          <p className="font-bold tracking-wider">ICA</p>
-        </div>
+        <p className={`text-7xl z-20 absolute font-bold tracking-wide ${colorClass} dark:text-acBox-dark`}>
+          {airquality}
+        </p>
+        <p className="md:text-sm lg:text-xl font-bold absolute tracking-wider z-20 dark:text-acBox-dark bottom-1/3 md:bottom-1/3 lg:top-2/3">ICA</p>
         <div
-          className={`flex absolute justify-center items-center ${airQualityShadowClass} rounded-full animate-spin-slow shadow-md bg-acSmoke w-60 h-60 dark:bg-acGray`}
+          className={`flex absolute justify-center items-center ${shadowClass} rounded-full animate-spin-slow shadow-md bg-acSmoke w-60 h-60 md:w-0 lg:w-60 lg:h-60 dark:bg-acGray`}
         ></div>
       </div>
     </section>

@@ -9,7 +9,7 @@ const AcTab = () => {
   };
 
   return (
-    <div className="bg-acWhite w-full pt-4 h-full lg:hidden flex flex-col">
+    <div className="bg-acWhite w-full pt-4 h-full flex flex-col">
       <div className="flex">
         {tabs.map((tab, index) => (
           <button
