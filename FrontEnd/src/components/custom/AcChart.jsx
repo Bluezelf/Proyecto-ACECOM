@@ -3,7 +3,7 @@ import * as echarts from "echarts";
 
 const AcChart = () => {
   useEffect(() => {
-    const month = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dec"];
+    const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     const value = [30, 50, 60, 80, 70, 50, 39, 60, 100, 50, 60, 80];
 
     const data = month.map((month, index) => ({

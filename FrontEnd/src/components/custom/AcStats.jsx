@@ -2,11 +2,11 @@ import PropTypes from "prop-types";
 
 const AcStats = ({ stats }) => {
   return (
-    <div className="hidden gap-8 lg:grid grid-cols-2 grid-rows-2 place-items-stretch h-full">
+    <div className="grid gap-5 md:grid-cols-4 lg:grid-cols-2 lg:grid-rows-2 lg:place-items-stretch lg:h-full">
       {stats.map((stat, index) => (
         <button
           key={index}
-          className={`flex flex-col text-lg font-semibold items-center py-3 justify-between rounded-xl drop-shadow-lg bg-acSmoke dark:bg-acGray`}
+          className={`flex flex-col font-semibold items-center justify-between md:px-10 md:py-2 lg:px-0 lg:py-3 rounded-xl drop-shadow-lg bg-acSmoke dark:bg-acGray`}
         >
           <span>{stat.label}</span>
           <span>{stat.icon}</span>
