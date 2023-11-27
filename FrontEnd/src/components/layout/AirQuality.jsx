@@ -24,7 +24,7 @@ const AirQuality = () => {
   let shadowClass = getShadowClass(airquality);
 
   return (
-    <section className="flex h-full lg:h-3/5 acBox col-span-1 flex-col md:row-span-2 lg:row-span-3">
+    <section className="flex h-full lg:h-[70%] acBox col-span-1 flex-col md:row-span-2 lg:row-span-3">
       <h1 className="acBox__title">AirQuality</h1>
       <div className="relative flex justify-center h-full items-center">
         <p className={`text-7xl z-20 absolute font-bold tracking-wide ${colorClass} dark:text-acBox-dark`}>
